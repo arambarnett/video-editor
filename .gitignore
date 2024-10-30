@@ -1,28 +1,19 @@
-# Virtual environment
 venv/
 env/
-
-# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
 *.so
-
-# Build
 build/
 dist/
 *.egg-info/
-
-# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
 .DS_Store
-
-# Project specific
 output/
 *.mp4
 *.mov
@@ -32,12 +23,8 @@ output/
 *.env
 *.pem
 *.key
-
-# Large binary files
 *.abi3.so
 ffmpeg-*
-
-# Secrets
 .env
 kubernetes/secrets.yaml
 k8s/secrets.yaml
