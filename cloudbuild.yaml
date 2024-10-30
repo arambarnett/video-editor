@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/video-editor:$SHORT_SHA', '.']
+  
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/video-editor:$SHORT_SHA']
+  
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args:
+      - 'set'
+      - 'image'
+      - 'deployment/video-editor'
+      - 'video-editor=gcr.io/$PROJECT_ID/video-editor:$SHORT_SHA'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-east4-a'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=ai-editor-cluster-east3'
+
+images:
+  - 'gcr.io/$PROJECT_ID/video-editor:$SHORT_SHA'
