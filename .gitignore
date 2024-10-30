@@ -1,30 +1,43 @@
-# Env files
-.env
-*.env
+# Virtual environment
+venv/
+env/
 
-# Build files
-*.pyc
+# Python
 __pycache__/
-*.egg-info/
-dist/
-build/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
 
-# Secrets
-*.key
-*.pem
-video-editor-434002-*.json
+# Build
+build/
+dist/
+*.egg-info/
 
 # IDE
 .idea/
 .vscode/
+*.swp
+*.swo
 .DS_Store
 
 # Project specific
 output/
 *.mp4
+*.mov
+*.avi
+*.wav
 *.mp3
-edited_video*
+*.env
+*.pem
+*.key
 
-# Kubernetes secrets
-k8s/secrets.yaml
+# Large binary files
+*.abi3.so
+ffmpeg-*
+
+# Secrets
+.env
 kubernetes/secrets.yaml
+k8s/secrets.yaml
