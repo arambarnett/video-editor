@@ -1,21 +1,30 @@
-# Secrets and environment
+# Env files
 .env
-*.key
-video-editor-434002-*.json
-Dockerfile
-k8s/deployment.yaml
-kubernetes/service.yaml
+*.env
 
-# Python
-__pycache__/
-venv/
+# Build files
 *.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
 
-# Output files
-output/
-*.mp4
+# Secrets
+*.key
+*.pem
+video-editor-434002-*.json
 
 # IDE
-.vscode/
 .idea/
+.vscode/
 .DS_Store
+
+# Project specific
+output/
+*.mp4
+*.mp3
+edited_video*
+
+# Kubernetes secrets
+k8s/secrets.yaml
+kubernetes/secrets.yaml

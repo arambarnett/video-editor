@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: ai-editor-app
+spec:
+  template:
+    spec:
+      containers:
+      - image: gcr.io/video-editor-434002/ai-editor-app:v3
+        env:
+        - name: PORT
+          value: "8080"
+        - name: OPENAI_API_KEY
+          value: "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"
+
