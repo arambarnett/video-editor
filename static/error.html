@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Links -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <link
+      rel="preload"
+      href="./fonts/francy.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Styles -->
+    <style>
+      @font-face {
+        font-family: "Francy";
+        src: url("./fonts/francy.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .error-container {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 600px;
+      }
+
+      h1 {
+        color: #e74c3c;
+      }
+
+      .details {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #f8f8f8;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        text-align: left;
+      }
+    </style>
+
+    <!-- Title -->
+    <title>Error</title>
+  </head>
+  <body>
+    <div class="error-container">
+      <h1>An error occurred</h1>
+      <p id="errorMessage"></p>
+      <button onclick="shareError()">Share with Support</button>
+      <button onclick="window.location.href='index.html'">Try Again</button>
+    </div>
+  </body>
+</html>

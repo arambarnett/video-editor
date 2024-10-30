@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Editor Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>AI Editor Admin Dashboard</h1>
+            <nav>
+                <a href="#system">System</a>
+                <a href="#processing">Processing</a>
+                <a href="#testing">Load Testing</a>
+            </nav>
+        </header>
+
+        <section id="system">
+            <h2>System Status</h2>
+            <div class="metrics">
+                <div class="metric">
+                    <h3>CPU Usage</h3>
+                    <canvas id="cpuChart"></canvas>
+                </div>
+                <div class="metric">
+                    <h3>Memory Usage</h3>
+                    <canvas id="memoryChart"></canvas>
+                </div>
+                <div class="metric">
+                    <h3>Disk Usage</h3>
+                    <div id="diskUsage"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="processing">
+            <h2>Processing History</h2>
+            <table id="processTable">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Files</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="testing">
+            <h2>Load Testing</h2>
+            <form id="loadTestForm">
+                <div class="form-group">
+                    <label>Number of Files:</label>
+                    <input type="number" name="fileCount" min="1" max="100">
+                </div>
+                <div class="form-group">
+                    <label>File Size (MB):</label>
+                    <input type="number" name="fileSize" min="1" max="1000">
+                </div>
+                <div class="form-group">
+                    <label>Concurrent Requests:</label>
+                    <input type="number" name="concurrent" min="1" max="10">
+                </div>
+                <button type="submit">Run Test</button>
+            </form>
+            <div id="testResults"></div>
+        </section>
+    </div>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

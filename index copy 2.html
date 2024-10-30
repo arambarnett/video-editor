@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Links -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <link
+      rel="preload"
+      href="./fonts/francy.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Styles -->
+    <style>
+      @font-face {
+        font-family: "Francy";
+        src: url("./fonts/francy.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <!-- Title -->
+    <title>AI Editor</title>
+  </head>
+  <body>
+    <!-- Main -->
+    <main>
+      <section class="hero-section">
+        <div class="container">
+          <img src="./images/logo.svg" alt="" class="logo-img" />
+
+          <img src="./images/edit-title.svg" alt="" class="edit-title-img" />
+
+          <div id="uploadBtn" class="primary-btn-wrapper">
+            <div class="primary-btn-container">
+              <div class="primary-btn">
+                <p class="state-1-text active">Upload Footage</p>
+                <p class="state-2-text">Process</p>
+                <p class="state-3-text">Processing...</p>
+                <p class="state-4-text">
+                  <svg
+                    width="33"
+                    height="32"
+                    viewBox="0 0 33 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.5001 31.8333C7.75557 31.8333 0.666748 24.7444 0.666748 16C0.666748 7.25545 7.75557 0.166626 16.5001 0.166626C25.2445 0.166626 32.3334 7.25545 32.3334 16C32.3334 24.7444 25.2445 31.8333 16.5001 31.8333ZM14.9209 22.3333L26.1168 11.1374L23.8776 8.89827L14.9209 17.855L10.4426 13.3765L8.2034 15.6158L14.9209 22.3333Z"
+                      fill="white"
+                    />
+                  </svg>
+                  Processed
+                </p>
+
+                <div class="effect-1"></div>
+                <div class="effect-2"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-details">
+            <p class="file-name">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20ZM9.0026 14L16.0737 6.92893L14.6595 5.51472L9.0026 11.1716L6.17421 8.3431L4.75999 9.7574L9.0026 14Z"
+                  fill="#8630FF"
+                />
+              </svg>
+
+              footage.mp4
+            </p>
+
+            <div class="features-wrapper">
+              <div class="feature">
+                <div class="feature-container">
+                  <p>Fast & Energized</p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-container">
+                  <p>Moderate</p>
+                </div>
+              </div>
+
+              <div class="feature">
+                <div class="feature-container">
+                  <p>Slow & Smooth</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Body bg effects -->
+    <img
+      src="./images/body-bg-effect-1.png"
+      alt=""
+      class="body-bg-effect-1-img"
+    />
+    <img
+      src="./images/body-bg-effect-2.png"
+      alt=""
+      class="body-bg-effect-2-img"
+    />
+    <img
+      src="./images/body-bg-effect-3.png"
+      alt=""
+      class="body-bg-effect-3-img"
+    />
+    <img
+      src="./images/body-bg-effect-4.png"
+      alt=""
+      class="body-bg-effect-4-img"
+    />
+
+    <!-- Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

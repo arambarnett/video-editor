@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Links -->
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <link
+      rel="preload"
+      href="./fonts/francy.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Styles -->
+    <style>
+      @font-face {
+        font-family: "Francy";
+        src: url("./fonts/francy.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <!-- Title -->
+    <title>AI Editor</title>
+  </head>
+  <body>
+    <!-- Add this admin link -->
+    <a href="/admin" class="admin-link">
+      <div class="admin-btn-container">
+        <div class="admin-btn">
+          <p>Admin Dashboard</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- Main -->
+    <main>
+      <section class="hero-section">
+        <div class="container">
+          <img src="./images/logo.svg" alt="" class="logo-img" />
+
+          <img src="./images/edit-title.svg" alt="" class="edit-title-img" />
+
+          <!-- Updated upload button with progress text -->
+          <div id="uploadBtn" class="primary-btn-wrapper">
+            <div class="primary-btn-container">
+              <div class="primary-btn state-1">
+                <p class="state-1-text active">Upload Footage</p>
+                <p class="state-2-text">Choose Style</p>
+                <p class="state-3-text">Processing...</p>
+                <p class="state-4-text">Done. Click to Download</p>
+                <div class="effect-1"></div>
+                <div class="effect-2"></div>
+                <div id="progressBar" style="display: none;">
+                  <div id="progressFill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Updated file input for multiple files -->
+          <input 
+            type="file" 
+            id="fileInput" 
+            name="files" 
+            accept="video/*" 
+            multiple 
+            required 
+            style="display: none;"
+          >
+
+          <!-- Progress text display -->
+          <p id="progressText" style="display: none; text-align: center; margin-top: 10px;"></p>
+
+          <!-- Style options -->
+          <div id="styleOptions" style="display: none;">
+            <h3>Choose a Style:</h3>
+            <div class="features-wrapper">
+              <div class="feature" data-style="Fast & Energized">
+                <div class="feature-container">
+                  <p>Fast & Energized</p>
+                </div>
+              </div>
+              <div class="feature" data-style="Moderate">
+                <div class="feature-container">
+                  <p>Moderate</p>
+                </div>
+              </div>
+              <div class="feature" data-style="Slow & Smooth">
+                <div class="feature-container">
+                  <p>Slow & Smooth</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start over button -->
+          <div id="startOverBtn" class="secondary-btn-wrapper" style="display: none;">
+            <div class="secondary-btn-container">
+              <div class="secondary-btn">
+                <p>Start Over</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- File details section -->
+          <div class="file-details" style="display: none;">
+            <div id="fileList"></div>
+            <div class="selected-style"></div>
+          </div>
+
+          <!-- Add this results container -->
+          <div id="results" class="results-container" style="display: none;">
+            <!-- Results will be dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Body bg effects -->
+    <img
+      src="./images/body-bg-effect-1.png"
+      alt=""
+      class="body-bg-effect-1-img"
+    />
+    <img
+      src="./images/body-bg-effect-2.png"
+      alt=""
+      class="body-bg-effect-2-img"
+    />
+    <img
+      src="./images/body-bg-effect-3.png"
+      alt=""
+      class="body-bg-effect-3-img"
+    />
+    <img
+      src="./images/body-bg-effect-4.png"
+      alt=""
+      class="body-bg-effect-4-img"
+    />
+
+    <!-- Add these styles to your existing styles section -->
+    <style>
+      .admin-link {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        text-decoration: none;
+        z-index: 1000;
+      }
+
+      .admin-btn-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 2px;
+      }
+
+      .admin-btn {
+        background: linear-gradient(92.49deg, rgba(255, 255, 255, 0.1) 0.18%, rgba(255, 255, 255, 0.05) 99.85%);
+        backdrop-filter: blur(5px);
+        border-radius: 10px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+      }
+
+      .admin-btn:hover {
+        background: linear-gradient(92.49deg, rgba(255, 255, 255, 0.2) 0.18%, rgba(255, 255, 255, 0.1) 99.85%);
+      }
+
+      .admin-btn p {
+        color: white;
+        font-family: "Francy", sans-serif;
+        margin: 0;
+        font-size: 14px;
+      }
+    </style>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/script.js"></script>
+
+    <div class="drop-zone">
+        <span class="drop-zone__prompt">Drop files here or click to upload</span>
+        <input type="file" id="fileInput" class="drop-zone__input" multiple accept="video/*">
+    </div>
+  </body>
+</html>

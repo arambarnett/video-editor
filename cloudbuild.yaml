@@ -1,0 +1,17 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/video-editor-434002/ai-editor-app:$COMMIT_SHA', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/video-editor-434002/ai-editor-app:$COMMIT_SHA']
+# Deploy container image to GKE
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  args:
+  - run
+  - --filename=kubernetes/deployment.yaml
+  - --image=gcr.io/video-editor-434002/ai-editor-app:$COMMIT_SHA
+  - --location=us-east4-a 
+  - --cluster=your-gke-cluster-name
+images:
+- 'gcr.io/video-editor-434002/ai-editor-app:$COMMIT_SHA'
