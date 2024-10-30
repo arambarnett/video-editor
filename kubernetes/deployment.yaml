@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-editor-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ai-editor-app
+  template:
+    metadata:
+      labels:
+        app: ai-editor-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: cloud.google.com/gke-accelerator
+                operator: Exists
+      containers:
+      - name: ai-editor-app
+        image: gcr.io/video-editor-434002/ai-editor-app:v1
+        resources:
+          requests:
+            cpu: "4"
+            memory: "8Gi"
+            nvidia.com/gpu: "1"
+          limits:
+            cpu: "8"
+            memory: "16Gi"
+            nvidia.com/gpu: "1"
+        env:
+        - name: PORT
+          value: "8080"
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-credentials
+              key: api-key
+        volumeMounts:
+        - name: temp-storage
+          mountPath: /app/temp
+        - name: google-cloud-key
+          mountPath: /var/secrets/google
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 15
+      volumes:
+      - name: temp-storage
+        emptyDir: 
+          sizeLimit: 10Gi
+      - name: google-cloud-key
+        secret:
+          secretName: google-cloud-key
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-editor-app-service
+  annotations:
+    cloud.google.com/backend-config: '{"default": "ai-editor-backend-config"}'
+spec:
+  selector:
+    app: ai-editor-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: ai-editor-backend-config
+spec:
+  timeoutSec: 3600  # 1 hour timeout for long video processing
+  connectionDraining:
+    drainingTimeoutSec: 300
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ai-editor-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ai-editor-app
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

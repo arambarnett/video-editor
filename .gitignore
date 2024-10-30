@@ -1,0 +1,26 @@
+# Secrets and credentials
+video-editor-434002-*.json
+.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Build
+dist/
+build/
+
+# Testing
+.pytest_cache/
+
+# Project specific
+output/
+*.mp4
+*.mov
